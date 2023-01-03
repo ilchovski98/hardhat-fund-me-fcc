@@ -3,7 +3,9 @@
 //Main function
 //Call main function
 
+const { network } = require('hardhat');
 const { networkConfig, developmentChains } = require('../helper-hardhat-config');
+const { verify } = require('../utils/verify');
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments;
@@ -22,8 +24,13 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const fundMe = await deploy('FundMe', {
     from: deployer,
     args: [ethUsdPriceFeedAddress], // put price feed address
-    log: true
+    log: true,
+    waitConfirmations: network.config.blockConfirmations || 1
   });
+
+  if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
+    await verify(fundMe.address, [ethUsdPriceFeedAddress]);
+  }
 
   log('---------------------------------------');
 };
