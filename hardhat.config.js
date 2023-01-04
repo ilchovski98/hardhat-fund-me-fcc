@@ -24,7 +24,8 @@ module.exports = {
     goerli: {
       url: GOERLI_RPC_URL,
       accounts: [PRIVATE_KEY],
-      chainId: 5
+      chainId: 5,
+      blockConfirmations: 10
     },
     localhost: {
       url: 'http://127.0.0.1:8545/',
@@ -35,12 +36,12 @@ module.exports = {
     apiKey: ETHERSCAN_API_KEY
   },
   gasReporter: {
-    enabled: false,
+    enabled: true,
     outputFile: 'gas-report.txt',
     noColors: true,
     currency: 'USD',
     coinmarketcap: COINMARKETCAP_API_KEY,
-    token: 'MATIC'
+    token: 'ETH'
   },
   namedAccounts: {
     deployer: {
