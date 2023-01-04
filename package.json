@@ -1,8 +1,25 @@
 {
   "name": "hardhat-fund-me-fcc",
+  "author": "Nikola Ilchovski",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "fund": "yarn hardhat run scripts/fund.js --network localhost",
+    "withdraw": "yarn hardhat run scripts/withdraw.js --network localhost",
+    "test": "yarn hardhat test",
+    "test:staging": "yarn hardhat test --network goerli",
+    "deploy": "yarn hardhat deploy",
+    "deploy-goerli": "yarn hardhat deploy --network goerli",
+    "compile": "yarn hardhat compile",
+    "node": "yarn hardhat node",
+    "console": "yarn hardhat console",
+    "console-goerli": "yarn hardhat console --network goerli",
+    "coverage": "yarn hardhat coverage",
+    "lint": "yarn solhint 'contracts/*.sol'",
+    "lint:fix": "yarn solhint 'contracts/*.sol' --fix",
+    "format": "yarn prettier --write"
+  },
   "devDependencies": {
     "@chainlink/contracts": "^0.5.1",
     "@ethersproject/abi": "^5.4.7",
@@ -21,7 +38,9 @@
     "hardhat": "^2.12.2",
     "hardhat-deploy": "^0.11.20",
     "hardhat-gas-reporter": "^1.0.8",
+    "prettier": "^2.8.1",
     "prettier-plugin-solidity": "^1.0.0-rc.1",
+    "solhint": "^3.3.7",
     "solidity-coverage": "^0.8.0",
     "typechain": "^8.1.0"
   }
